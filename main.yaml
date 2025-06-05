@@ -3,7 +3,7 @@
   become: yes
   #tasks:  #instead of giving tasks here we can give roles 
   roles:  #this roles will now search for roles directory in current folder
-    -"{{ component }}"
+    - "{{ component }}"
 
 
 

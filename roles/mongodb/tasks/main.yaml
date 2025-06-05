@@ -1,6 +1,6 @@
 - name: copying mongo repo to yum repos
   ansible.builtin.copy: 
-    src:  mongo.repo  #here we are saying copy module to copy mongo.repo from current dir but in roles all files to be used in script should be eritten in files dir under component main dir
+    src:  mongo.repo  #here we are saying copy module to copy mongo.repo from current dir but in roles all files to be used in script should be written in files dir under component main dir
     dest: /etc/yum.repos.d/mongo.repo
 
 - name: installing mongodb package
