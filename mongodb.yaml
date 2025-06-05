@@ -1,0 +1,16 @@
+- name: creating mongodb
+  hosts:  mongodb
+  become: yes
+  #tasks:  #instead of giving tasks here we can give roles 
+  roles:  #this roles will now search for roles directory in current folder
+    -mongodb  #once ansible find roles directory it will then search for mongodb subfolder for tasks folder.
+              #this tasks folder actually contains the tasks to be performed
+              #main.yaml is the default file ansible will search for in tasks sub folder. so write all tasks in main.yaml
+
+    
+#here u can understand we are just calling components from outside
+#all the tasks to be performed and all the files and vars everything replated to components are in 
+# roles
+#so what we can do is instead of writing multiple yaml script to call we can write one simple script that is used to call any of the component
+# look for main.yaml script in parent dir (roboshop-ansible-roles)
+#there u can find script to call all componets dinemically.

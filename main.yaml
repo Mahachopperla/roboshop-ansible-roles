@@ -1,0 +1,13 @@
+- name: creating "{{ component }}"
+  hosts:  "{{ component }}"
+  become: yes
+  #tasks:  #instead of giving tasks here we can give roles 
+  roles:  #this roles will now search for roles directory in current folder
+    -"{{ component }}"
+
+
+
+# so here we used common var component to create any of the component
+#while executing script u can simply say
+
+# ansible-playbook -i inventory.ini -e "component=Name_of_component_you want to create" main.yaml
