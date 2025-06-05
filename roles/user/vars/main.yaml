@@ -1,0 +1,2 @@
+REDIS_HOST: redis.robotshop.site
+MONGODB_HOST: mongodb.robotshop.site

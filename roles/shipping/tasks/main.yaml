@@ -1,0 +1,39 @@
+
+
+- name: app app_setup
+  include_role:
+    name: common
+    tasks_from: app_setup
+
+- name: maven setup
+  include_role:
+    name: common
+    tasks_from: maven_setup.yaml
+
+# if u get error place systemd conf here and restart service at end
+
+
+
+- name: import data to mysql
+  community.mysql.mysql_db:
+    name: all
+    state: import
+    login_user: root
+    login_password: RoboShop@1
+    login_host: mysql.robotshop.site
+    target: "{{ item }}"
+  loop:
+    - /app/db/schema.sql
+    - /app/db/app-user.sql
+    - /app/db/master-data.sql
+  
+- name: setting systemd
+  include_role:
+    name: common
+    tasks_from: systemd 
+
+# - name: restart {{ component }} service
+#   ansible.builtin.service:
+#     name: "{{ component }}"
+#     state:  restarted
+

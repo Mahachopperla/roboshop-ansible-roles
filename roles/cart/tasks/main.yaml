@@ -1,0 +1,15 @@
+- name: setting up application
+  include_role:
+    name: common
+    tasks_from: app_setup.yaml
+
+- name: setting up nodejs
+  include_role:
+    name: common
+    tasks_from: nodejs.yaml
+
+
+- name: setting up systemd service
+  include_role:
+    name: common
+    tasks_from: systemd.yaml
