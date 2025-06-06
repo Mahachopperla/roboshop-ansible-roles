@@ -1,3 +1,5 @@
 CATALOGUE_HOST: catalogue.robotshop.site
 USER_HOST: user.robotshop.site
 CART_HOST:  cart.robotshop.site
+SHIPPING_HOST:  shipping.robotshop.site
+PAYMENT_HOST: payment.robotshop.site
