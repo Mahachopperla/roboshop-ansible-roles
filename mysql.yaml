@@ -1,9 +1,16 @@
 - name: creating "{{ component }}"
   hosts:  "{{ component }}"
   become: yes
-  vars_files:
-    - vault/mysql.yaml
-  #tasks:  #instead of giving tasks here we can give roles 
-  roles:  #this roles will now search for roles directory in current folder
+  # vars_files:
+  #   - vault/mysql.yaml
+  
+  roles:  
     - "{{ component }}"
   
+
+  #here we haven't written aything in vault folder except gitignore
+
+  #as we can't push secrets to git...we can directly create vault's yaml file in ansible server itself
+
+  #for better understanding read notes or watch session:28 time stamp:59 mins
+
