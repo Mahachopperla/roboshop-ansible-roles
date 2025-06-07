@@ -41,7 +41,7 @@
 - name: deployment
   tags:
     - deploy
-  include_role:
+  import_role: # here i'm using import role instead of include_role cause when we use tags include wont assign auto-tags defaultly to all tasks included where as import will auto assign tags to it's sub tasks
     name: common
     tasks_from: deployment
 
