@@ -1,1 +1,4 @@
 MYSQL_ROOT_PASSWORD:  "{{ lookup('amazon.aws.aws_ssm', '/robotshop/mysql/mysql-root-password', region='us-east-1', decrypt=true ) }}"
+
+# i deleted parameter from parameter store as it was costing
+#whenver u want to execute this make sure to create parameter in aws to prevent error
