@@ -1,0 +1,9 @@
+- name: creating "{{ component }}"
+  hosts:  "{{ component }}"
+  become: yes
+  vars_files:
+    - vault/mysql.yaml
+  #tasks:  #instead of giving tasks here we can give roles 
+  roles:  #this roles will now search for roles directory in current folder
+    - "{{ component }}"
+  
