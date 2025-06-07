@@ -38,9 +38,45 @@
   when: command_output.stdout == "false"
   ansible.builtin.shell:  mongosh --host mongodb.robotshop.site </app/db/master-data.js
 
+- name: deployment
+  tags:
+    - deploy
+  include_role:
+    name: common
+    tasks_from: deployment
 
+#here we used tag in deployment we can run only this particular task whenver there is new deployment
+#we can run this code as
+##################3ansible-playbook -i inventory.ini main.yaml -t deploy##########################
 
+# usage of -t deploy will make sure only the tasks with the deploy tag will run
 
+# and also 
+
+# We can include other roles in our role in 2 ways:
+
+# 1) include_role: it will include tasks in run time, it will validate also in run-time.
+# Tags and when conditions apply only to the include_role statement itself , not to the tasks within the role.
+
+# - name: deployment call
+#   tags:
+#     - deploy
+#   include_role:
+#     name: common
+#     tasks_from: deployment.yaml
+
+# if we use this tags will only be applied to deployment call task and not to acutal tasks included in common role
+
+# 2) import_role: ansible validate import role before playbook execution
+# tags and when conditions apply to the imported role and it's tasks. 
+# - name: deployment call
+#   tags:
+#     - deploy
+#   import_role:
+#     name: common
+#     tasks_from: deployment.yaml
+# if we use this tags will be applicable to all tasks inside common/deployment.yaml
+# checks notes (ansible tags for more clear understanding)
 
 
 
