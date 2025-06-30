@@ -1,5 +1,7 @@
 - name: creating "{{ component }}"
-  hosts:  "{{ component }}"
+  #hosts:  "{{ component }}"
+  hosts: localhost
+  connection: local
   become: yes
   #tasks:  #instead of giving tasks here we can give roles 
   roles:  #this roles will now search for roles directory in current folder
