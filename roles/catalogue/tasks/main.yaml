@@ -25,7 +25,7 @@
 
 
 - name: check data is already loaded or not
-  ansible.builtin.command:  mongosh --quiet --host mongodb.robotshop.site --eval "db.adminCommand('listDatabases').databases.map(db => db.name).includes('catalogue')"
+  ansible.builtin.command:  mongosh --quiet --host mongodb-dev.robotshop.site --eval "db.adminCommand('listDatabases').databases.map(db => db.name).includes('catalogue')"
   register: command_output
   args:
     chdir:  /app
@@ -36,14 +36,14 @@
 
 - name: loading data to mongodb
   when: command_output.stdout == "false"
-  ansible.builtin.shell:  mongosh --host mongodb.robotshop.site </app/db/master-data.js
+  ansible.builtin.shell:  mongosh --host mongodb-dev.robotshop.site </app/db/master-data.js
 
-- name: deployment
-  tags:
-    - deploy
-  import_role: # here i'm using import role instead of include_role cause when we use tags include wont assign auto-tags defaultly to all tasks included where as import will auto assign tags to it's sub tasks
-    name: common
-    tasks_from: deployment
+# - name: deployment
+#   tags:
+#     - deploy
+#   import_role: # here i'm using import role instead of include_role cause when we use tags include wont assign auto-tags defaultly to all tasks included where as import will auto assign tags to it's sub tasks
+#     name: common
+#     tasks_from: deployment
 
 #here we used tag in deployment we can run only this particular task whenver there is new deployment
 #we can run this code as
