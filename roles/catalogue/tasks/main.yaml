@@ -25,7 +25,7 @@
 
 
 - name: check data is already loaded or not
-  ansible.builtin.command:  mongosh --quiet --host mongodb-dev.robotshop.site --eval "db.adminCommand('listDatabases').databases.map(db => db.name).includes('catalogue')"
+  ansible.builtin.command:  mongosh --quiet --host mongodb.robotshop.site --eval "db.adminCommand('listDatabases').databases.map(db => db.name).includes('catalogue')"
   register: command_output
   args:
     chdir:  /app
