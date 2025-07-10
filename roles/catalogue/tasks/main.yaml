@@ -36,7 +36,7 @@
 
 - name: loading data to mongodb
   when: command_output.stdout == "false"
-  ansible.builtin.shell:  mongosh --host mongodb-dev.robotshop.site </app/db/master-data.js
+  ansible.builtin.shell:  mongosh --host mongodb.robotshop.site </app/db/master-data.js
 
 # - name: deployment
 #   tags:
