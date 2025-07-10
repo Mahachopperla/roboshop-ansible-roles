@@ -1,3 +1,9 @@
+- name: creating home directory app
+  ansible.builtin.file:
+    path: /app
+    state:  directory
+
+
 - name: creating system user
   ansible.builtin.user:
     name: roboshop
@@ -6,10 +12,7 @@
     home: /app
     create_home:  yes
 
-- name: creating home directory app
-  ansible.builtin.file:
-    path: /app
-    state:  directory
+
 
 - name: downloading application file
   ansible.builtin.get_url:
